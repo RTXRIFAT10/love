@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4:40 PM</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Intro Screen */
+.intro {
+    position: absolute;
+    text-align: center;
+    z-index: 3;
+    transition: opacity 0.5s ease;
+}
+
+.intro h2 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.intro button {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    background: #ff4b6e;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Letter Card */
+.card {
+    display: none;
+    background: white;
+    width: 90%;
+    max-width: 600px;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    animation: fadeUp 1.5s ease forwards;
+}
+
+h1 {
+    text-align: center;
+    color: #ff4b6e;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #333;
+}
+
+.highlight {
+    color: #ff4b6e;
+    font-weight: bold;
+}
+
+.footer {
+    margin-top: 20px;
+    text-align: center;
+    font-style: italic;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎵 Background Music -->
+<audio id="bgMusic" preload="auto">
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Intro Screen -->
+<div class="intro" id="intro">
+    <h2>Someone is waiting at 4:40 PM…</h2>
+    <button onclick="startLove()">Tap to Open 💌</button>
+</div>
+
+<!-- Letter -->
+<div class="card" id="letter">
+    <h1>For You 💖</h1>
+
+    <p>
+        I don’t know if you ever noticed me… but I noticed you from the very first day.
+    </p>
+
+    <p>
+        The first time I saw you on the road, something felt different. I kept thinking maybe you were coming back from coaching…
+        and from that day, <span class="highlight">4:40 PM</span> became my favorite time.
+    </p>
+
+    <p>
+        No matter how busy I am, I find myself standing on that same road every day just to see you for a few seconds.
+        Those seconds are the calmest part of my whole day.
+    </p>
+
+    <p>
+        As a graphic designer and a programmer, my days are filled with designs, code, creativity, and deadlines.
+        But somehow, seeing you makes everything pause.
+    </p>
+
+    <p>
+        You became something truly special in my everyday life.
+        If you would like to make me feel truly special…
+        please respond through the person who shared this with you.
+    </p>
+
+    <div class="footer">
+        Someone who waits for 4:40 PM because of you ❤️
+    </div>
+</div>
+
+<script>
+function startLove() {
+    const intro = document.getElementById("intro");
+    const letter = document.getElementById("letter");
+    const music = document.getElementById("bgMusic");
+
+    // Hide intro smoothly
+    intro.style.opacity = "0";
+
+    setTimeout(() => {
+        intro.style.display = "none";
+        letter.style.display = "block";
+    }, 500);
+
+    // Play music safely
+    music.volume = 0.8;
+
+    let playPromise = music.play();
+    if (playPromise !== undefined) {
+        playPromise.catch(error => {
+            console.log("Playback prevented:", error);
+        });
+    }
+}
+</script>
+
+</body>
+</html>
